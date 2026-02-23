@@ -1,0 +1,40 @@
+<div class="container">
+  <section class="nueva-noticia">
+    <h2>Nueva Noticia</h2>
+    <div>
+      <label for="inputTitulo">Título de la noticia:</label>
+      <input type="text" id = "inputTitulo" placeholder="Título..." [(ngModel)]="noticia.titulo" />
+    </div>
+    <div>
+      <label for="inputImagen">Imagen de la noticia:</label>
+      <input type="text" id = "inputImagen" placeholder="URL de la imagen..." [(ngModel)]="noticia.imagenUrl" />
+    </div>
+    <div>
+      <label for="inputCuerpo">Cuerpo de la noticia:</label>
+      <input type="text" id = "inputCuerpo" placeholder="Cuerpo..." [(ngModel)]="noticia.cuerpo" />
+    </div>
+    <div>
+      <label for="inputFecha">Fecha de publicación:</label>
+      <input type="date" id = "inputFecha" [(ngModel)]="noticia.fechaPublicacion" />
+    </div>
+    <button (click)="insertarNoticia(noticia)">Agregar noticia</button>
+  </section>
+  <section class="noticias">
+    <h2>Noticias</h2>
+    <ul>
+      @for (noticia of noticias; track noticia.titulo) {
+        <li>
+          <h3>{{ noticia.titulo }}</h3>
+          <img [src]="noticia.imagenUrl" [alt]="noticia.titulo" />
+          <p>{{ noticia.cuerpo }}</p>
+          <small
+            >Publicado el
+            {{
+              noticia.fechaPublicacion
+            }}</small
+          >
+        </li>
+      }
+    </ul>
+  </section>
+</div>
